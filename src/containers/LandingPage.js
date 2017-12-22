@@ -1,14 +1,12 @@
 import React from 'react';
 import LogIn from '../components/LogIn'
 import SignUp from '../components/SignUp'
-import { Route, Switch, Link } from 'react-router-dom';
-
+import { Route, Switch, Link, NavLink} from 'react-router-dom';
 
 
 class LandingPage extends React.Component{
   state = {
-    loginUsername: '',
-    loginPassword: ''
+
   }
 
   handleChange = (e) => {
@@ -26,22 +24,12 @@ class LandingPage extends React.Component{
 
     return(
       <div>
-        <Link to='LogIn'><button>Log In</button></Link>
-        <Switch>
-          <Route
-            path='/LogIn'
-            render={() => {
-              return(
-                <LogIn
-                  loginUsername={this.state.loginUsername}
-                  handleChange={this.handleChange}
-                  loginPassword={this.state.loginPassword}
-                  signIn={this.signIn}
-                  />
-              );
-            }}
-            />
-        </Switch>
+      <h2>Hey Buddy!</h2>
+        <div id="firstpage" className="first-page">
+          <div id="firstpage-content">
+          <Link to='/login'><button >Log In</button></Link>
+          </div>
+        </div>
       </div>
     )
   }
