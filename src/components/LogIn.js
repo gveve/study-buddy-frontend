@@ -1,26 +1,39 @@
 import React from 'react';
 
-const LogIn = ({loginUsername, handleChange, loginPassword, signIn}) => {
-  return (
-    <div>
-      <input
-        type='text'
-        placeholder='Username'
-        name='loginUsername'
-        value={loginUsername}
-        onChange={handleChange}
-      /> <br/>
-      <input
-        type='text'
-        placeholder='Password'
-        name='loginPassword'
-        value={loginPassword}
-        onChange={handleChange}
-      /> <br/>
-    <button onClick={signIn}>Login In!</button>
+class LogIn extends React.Component {
+  state = {
+    username: '',
+    password: ''
+  }
 
-    </div>
-  )
+  handleChange = (e) => {this.setState({[e.target.name]: e.target.value})}
+
+  signIn = () => {
+    console.log('signed in')
+  }
+
+  render(){
+    return (
+      <div>
+        <input
+          type='text'
+          placeholder='Username'
+          name='loginUsername'
+          value={this.state.username}
+          onChange={this.handleChange}
+        /> <br/>
+        <input
+          type='text'
+          placeholder='Password'
+          name='loginPassword'
+          value={this.state.password}
+          onChange={this.handleChange}
+        /> <br/>
+      <button onClick={this.signIn}>Login In!</button>
+
+      </div>
+    )
+  }
 }
 
 export default LogIn;
