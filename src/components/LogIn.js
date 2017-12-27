@@ -18,14 +18,14 @@ class LogIn extends React.Component {
         <input
           type='text'
           placeholder='Username'
-          name='loginUsername'
+          name='username'
           value={this.state.username}
           onChange={this.handleChange}
         /> <br/>
         <input
           type='text'
           placeholder='Password'
-          name='loginPassword'
+          name='password'
           value={this.state.password}
           onChange={this.handleChange}
         /> <br/>

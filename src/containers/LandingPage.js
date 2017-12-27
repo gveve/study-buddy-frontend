@@ -16,10 +16,10 @@ class LandingPage extends React.Component{
 
     return(
       <div>
-      <h2>Hey Buddy!</h2>
         <div id="firstpage" className="first-page">
           <div id="firstpage-content">
           <Link to='/login'><button >Log In</button></Link>
+          <Link to='/signup'><button >Sign Up</button></Link>
           </div>
         </div>
       </div>

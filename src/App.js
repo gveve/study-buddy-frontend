@@ -5,6 +5,8 @@ import LandingPage from './containers/LandingPage'
 import { Route, Switch } from 'react-router-dom';
 import LogIn from './components/LogIn'
 import HeaderContainer from './containers/HeaderContainer'
+import SignUp from './components/SignUp'
+
 
 class App extends Component {
 
@@ -16,6 +18,8 @@ class App extends Component {
         <Switch>
           <Route exact path='/' component={LandingPage} />
           <Route path='/LogIn' component={LogIn}/>
+          <Route path='/SignUp' component={SignUp}/>
+
         </Switch>
       </div>
     );
