@@ -6,7 +6,6 @@ import { Route, Switch } from 'react-router-dom';
 import LogIn from './components/LogIn'
 import HeaderContainer from './containers/HeaderContainer'
 import SignUp from './components/SignUp'
-import UserShow from './containers/UserShow'
 
 
 class App extends Component {
@@ -19,7 +18,6 @@ class App extends Component {
           <Route exact path='/' component={LandingPage} />
           <Route path='/LogIn' component={LogIn}/>
           <Route path='/SignUp' component={SignUp}/>
-          <Route path='/Buddy' component={UserShow}/>
         </Switch>
       </div>
     );

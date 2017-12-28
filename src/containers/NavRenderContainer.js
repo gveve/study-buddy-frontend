@@ -6,25 +6,23 @@ import HeaderContainer from '../containers/HeaderContainer'
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 
 
-class NoteNew extends React.Component{
+class UserShow extends React.Component{
   constructor() {
     super();
   }
 
-  function post request
-
-
   render(){
 
     return(
-      <div>
-      <form>
-      inputs
-      </form>
-      </div>
+    <div>
+    <Subjects show> 
+    <Courses show>
+    <notes show>
+    <new note>
+    </div>
     )
   }
 
 }
 
-export default NoteNew;
+export default UserShow;

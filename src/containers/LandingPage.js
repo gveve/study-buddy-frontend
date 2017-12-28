@@ -16,6 +16,7 @@ class LandingPage extends React.Component{
           <div id="firstpage-content">
           <Link to='/login'><button >Log In</button></Link>
           <Link to='/signup'><button >Sign Up</button></Link>
+          //if the user comes back valid  then render nav render container instad of log in and sign up
           </div>
         </div>
       </div>
