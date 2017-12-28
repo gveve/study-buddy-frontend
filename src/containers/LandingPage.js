@@ -5,11 +5,7 @@ import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import {button} from 'semantic-ui-react'
 
 
-
 class LandingPage extends React.Component{
-
-
-
 
 
   render(){
