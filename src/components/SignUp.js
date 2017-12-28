@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Switch, Link, Redirect } from 'react-router-dom';
 
 class SignUp extends React.Component {
   state = {
@@ -8,20 +9,26 @@ class SignUp extends React.Component {
     lastName: ''
   }
 
-  handleChange = (e) => {this.setState({[e.target.name]: e.target.value})}
+  handleChange = (e) => {
+    // debugger;
+    this.setState({[e.target.name]: e.target.value})}
 
 
   signUp = () => {
-    const newUser = {method: 'post', headers: {
+    // debugger;
+    console.log(this.state.username)
+    const newUser = {method: 'POST',
+    headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
-    }, body: JSON.stringify({
+    },
+    body: JSON.stringify({
       username: this.state.username,
-      password: this.state.password,
-      firstName: this.state.firstName,
-      lastName: this.state.lastName
+      password_digest: this.state.password,
+      first_name: this.state.firstName,
+      last_name: this.state.lastName
     })}
-    fetch('http://localhost:3001/users', newUser)
+    fetch('http://localhost:3000/users', newUser)
   }
 
   render(){
@@ -57,7 +64,7 @@ class SignUp extends React.Component {
           onChange={this.handleChange}
         /> <br/>
 
-      <button onClick={this.signUp}>Create Account!</button>
+        <Link to="/Buddy"><button onClick={this.signUp}>Create Account!</button></Link>
 
       </div>
     )
