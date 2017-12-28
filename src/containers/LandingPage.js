@@ -2,7 +2,7 @@ import React from 'react';
 import LogIn from '../components/LogIn'
 import SignUp from '../components/SignUp'
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
-
+import {button} from 'semantic-ui-react'
 
 
 
