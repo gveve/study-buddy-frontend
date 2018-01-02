@@ -61,7 +61,7 @@ class App extends Component {
             lastName={this.state.lastName}
             signUp={this.signUp}/>
           }/>
-          <Route path='/Buddy' component={NavRenderContainer}/>
+          <Route path='/Buddy' component={NavRenderContainer} render={() => <NavRenderContainer username={this.state.username}/>}/>
         </Switch>
       </div>
     );
