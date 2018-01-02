@@ -5,6 +5,7 @@ import LandingPage from './containers/LandingPage'
 import { Route, Switch } from 'react-router-dom';
 import LogIn from './components/LogIn'
 import HeaderContainer from './containers/HeaderContainer'
+import NavRenderContainer from './containers/NavRenderContainer'
 import SignUp from './components/SignUp'
 
 
@@ -60,7 +61,7 @@ class App extends Component {
             lastName={this.state.lastName}
             signUp={this.signUp}/>
           }/>
-          <Route path='/Buddy' component={UserShow}/>
+          <Route path='/Buddy' component={NavRenderContainer}/>
         </Switch>
       </div>
     );

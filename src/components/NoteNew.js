@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React from 'react';
 import LogIn from '../components/LogIn'
 import SignUp from '../components/SignUp'
@@ -77,31 +76,6 @@ class NoteNew extends React.Component{
         <Form.Field control={Button}>Submit</Form.Field>
       </Form>
       </Container>
-=======
-// patch for the edit Note
-import React from 'react';
-
-
-export default class NoteNew extends React.Component {
-  state = {
-    name: '',
-    subject: '',
-    course: '',
-    template: ''
-  }
-
-  handleChange = (e) => {this.setState({[e.target.name]: e.target.value})}
-
-
-  render(){
-    return (
-      <div>
-        <form >
-          <input></input>
-          <input></input>
-          <input></input>
-        </form>
->>>>>>> fcfb40049106d5e140ac22621c057c51872ba952
       </div>
     )
   }
