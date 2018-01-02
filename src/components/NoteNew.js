@@ -30,7 +30,7 @@ class NoteNew extends React.Component{
     let subject = this.props.subjects
     return subject.map((sub, i) => {
       // debugger;
-        // console.log(sub.subject_name)
+        console.log(sub.subject_name)
         // { key: 'f', text: 'Female', value: 'female' }
         return {key: i, text: `${sub.subject_name}`, value: sub.subject_name}
       })
