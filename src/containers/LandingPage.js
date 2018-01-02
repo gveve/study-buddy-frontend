@@ -1,6 +1,7 @@
 import React from 'react';
 import LogIn from '../components/LogIn'
 import SignUp from '../components/SignUp'
+import NavRenderContainer from '../containers/NavRenderContainer'
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 
 
