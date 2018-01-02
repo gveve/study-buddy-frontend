@@ -16,7 +16,7 @@ export default class NoteNew extends React.Component {
   render(){
     return (
       <div>
-        <form>
+        <form >
           <input></input>
           <input></input>
           <input></input>
