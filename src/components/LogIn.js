@@ -1,40 +1,31 @@
 import React from 'react';
+import { Segment, Button } from 'semantic-ui-react'
 
-class LogIn extends React.Component {
-  state = {
-    username: '',
-    password: ''
-  }
-
-  handleChange = (e) => {this.setState({[e.target.name]: e.target.value})}
-
-  signIn = () => {
-    console.log('signed in')
-  }
-
-  render(){
-    console.log(this.props)
+const LogIn = ({handleChange, username, password, logIn}) => {
     return (
       <div>
-        <input
-          type='text'
-          placeholder='Username'
-          name='username'
-          value={this.state.username}
-          onChange={this.handleChange}
-        /> <br/>
-        <input
-          type='text'
-          placeholder='Password'
-          name='password'
-          value={this.state.password}
-          onChange={this.handleChange}
-        /> <br/>
-      <button >Login In!</button>
-
+        <Segment padded inverted color='olive' attached='top'  >
+          <form onSubmit={logIn}>
+            <input
+              type='text'
+              placeholder='Username'
+              name='username'
+              value={username}
+              onChange={handleChange}
+            /> <br/>
+            <input
+              type='text'
+              placeholder='Password'
+              name='password'
+              value={password}
+              onChange={handleChange}
+            /> <br/>
+          <Link to="/Buddy"><Button>Log In!</Button></Link>
+          </form>
+        </Segment>
       </div>
     )
-  }
+
 }
 
 export default LogIn;
