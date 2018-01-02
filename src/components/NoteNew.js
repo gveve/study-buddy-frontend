@@ -3,13 +3,14 @@ import LogIn from '../components/LogIn'
 import SignUp from '../components/SignUp'
 import LandingPage from '../containers/LandingPage'
 import HeaderContainer from '../containers/HeaderContainer'
+import Templates from '../components/Templates'
 import { Grid, Sticky, Table, Visibility, Container, Divider, Header, Menu, Message, Segment, Sidebar, Button, Image, Icon, Checkbox, Form, Input, Radio, Select, TextArea } from 'semantic-ui-react'
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 
 class NoteNew extends React.Component{
   constructor(props) {
     super(props);
-      // console.log(props);
+      console.log(props);
       // debugger;
     this.state = {
       props: {props},
@@ -54,6 +55,8 @@ class NoteNew extends React.Component{
   handleTemplate = (event, value) => {
     console.log(event, value.value)
     let thing = value.value
+    console.log(this.props.setTemplate);
+    this.props.setTemplate(value)
     this.setState({template: thing})
   }
 
@@ -92,11 +95,16 @@ class NoteNew extends React.Component{
         </Form.Group>
         <Form.Group inline>
           <label>Template</label>
-          <Form.Field control={Radio} label='One' value='1' value='reallyGood' checked={value === '1'} onChange={this.handleTemplate} />
-          <Form.Field control={Radio} label='Two' value='2' value='fire' checked={value === '2'} onChange={this.handleTemplate} />
-          <Form.Field control={Radio} label='Three' value='3' value='couldBeBetter' checked={value === '3'} onChange={this.handleTemplate} />
-          <Form.Field control={Radio} label='Four' value='4' value='sloppyMess' checked={value === '4'} onChange={this.handleTemplate} />
-          <Form.Field control={Radio} label='Five' value='5' value='sloppyMess' checked={value === '5'} onChange={this.handleTemplate} />
+          <Form.Field control={Radio} label='One' value='1' value='ReallyGood' checked={value === '1'} onChange={this.handleTemplate} />
+            <Button animated='vertical' color='green'>ReallyGood</Button>
+          <Form.Field control={Radio} label='Two' value='2' value='Fire' checked={value === '2'} onChange={this.handleTemplate} />
+            <Button animated='vertical' color='green'>Fire</Button>
+          <Form.Field control={Radio} label='Three' value='3' value='CouldBeBetter' checked={value === '3'} onChange={this.handleTemplate} />
+            <Button animated='vertical' color='green'>CouldBeBetter</Button>
+          <Form.Field control={Radio} label='Four' value='4' value='SloppyMess' checked={value === '4'} onChange={this.handleTemplate} />
+            <Button animated='vertical' color='green'>SloppyMess</Button>
+          <Form.Field control={Radio} label='Five' value='5' value='DoNotUse' checked={value === '5'} onChange={this.handleTemplate} />
+            <Button animated='vertical' color='green'>DoNotUse</Button>
         </Form.Group>
         <Form.Field control={Button}>Submit</Form.Field>
       </Form>

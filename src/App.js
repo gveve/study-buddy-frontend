@@ -4,6 +4,7 @@ import './App.css';
 import LandingPage from './containers/LandingPage'
 import { Route, Switch } from 'react-router-dom';
 import LogIn from './components/LogIn'
+import ReallyGood from './components/ReallyGood'
 import HeaderContainer from './containers/HeaderContainer'
 import NavRenderContainer from './containers/NavRenderContainer'
 import SignUp from './components/SignUp'
@@ -18,8 +19,11 @@ class App extends Component {
   }
 
   handleChange = (e) => {
-
-    this.setState({[e.target.name]: e.target.value})}
+    console.log(e);
+    this.setState({
+      [e.target.name]: e.target.value
+    })
+  }
 
   signUp = () => {
     const newUser = {method: 'POST',
@@ -62,6 +66,9 @@ class App extends Component {
             signUp={this.signUp}/>
           }/>
         <Route path='/Buddy' render={() => <NavRenderContainer
+            userInfo={this.state}/>
+        }/>
+        <Route path='/ReallyGood' render={() => <ReallyGood
             userInfo={this.state}/>
         }/>
         </Switch>

@@ -5,9 +5,15 @@ import SubjectsShow from '../components/SubjectsShow'
 import CoursesShow from '../components/CoursesShow'
 import NotesList from '../components/NotesList'
 import NoteNew from '../components/NoteNew'
+import CouldBeBetter from '../components/CouldBeBetter'
+import DoNotUse from '../components/DoNotUse'
+import Fire from '../components/Fire'
+import ReallyGood from '../components/ReallyGood'
+import SloppyMess from '../components/SloppyMess'
+import Templates from '../components/Templates'
 import LandingPage from '../containers/LandingPage'
 import HeaderContainer from '../containers/HeaderContainer'
-import { Grid, Sticky, Table, Visibility, Container, Divider, Header, Menu, Message, Segment, Sidebar, Button, Image, Icon, } from 'semantic-ui-react'
+import { Grid, Sticky, Table, Visibility, Container, Divider, Header, Menu, Message, Segment, Sidebar, Button, Image, Icon, Input} from 'semantic-ui-react'
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 
 
@@ -20,7 +26,8 @@ class UserShow extends React.Component{
       visible: false,
       type: '',
       subjects: [],
-      courses: []
+      courses: [],
+      template: ''
     }
   }
 
@@ -36,13 +43,17 @@ class UserShow extends React.Component{
     toggleVisibility = () => this.setState({ visible: !this.state.visible })
 
     handleRender = (event) => {
-      // event.preventDefault()
-      // console.log(event.currentTarget.innerText);
-      // console.log(this.state.subjects);
-      // console.log(this.state.courses);
-      // debugger;
       this.setState({
         type:event.currentTarget.innerText
+      })
+    }
+
+    setTemplate = (event) => {
+      // debugger;
+      console.log(event)
+      this.setState({
+        type: event.value,
+        template: event.value
       })
     }
 
@@ -63,8 +74,26 @@ class UserShow extends React.Component{
           content = <NotesList courses={this.state.courses} subjects={this.state.subjects}/>
         break;
       case 'New Note':
-          content = <NoteNew courses={this.state.courses} subjects={this.state.subjects}/>
+          content = <NoteNew courses={this.state.courses} subjects={this.state.subjects} setTemplate={this.setTemplate}/>
         break;
+      case 'Templates':
+          content = <Templates courses={this.state.courses} subjects={this.state.subjects}/>
+        break;
+      case 'ReallyGood':
+          content = <ReallyGood courses={this.state.courses} subjects={this.state.subjects}/>
+        break;
+        case 'SloppyMess':
+            content = <SloppyMess courses={this.state.courses} subjects={this.state.subjects}/>
+          break;
+          case 'Fire':
+              content = <Fire courses={this.state.courses} subjects={this.state.subjects}/>
+            break;
+            case 'DoNotUse':
+                content = <DoNotUse courses={this.state.courses} subjects={this.state.subjects}/>
+              break;
+              case 'CouldBeBetter':
+                  content = <CouldBeBetter courses={this.state.courses} subjects={this.state.subjects}/>
+                break;
       default:
           content = <p> Hey! </p>
 
@@ -81,21 +110,25 @@ class UserShow extends React.Component{
           <Icon name='home' />
           Home
         </Menu.Item>
-        <Menu.Item name='game' value='game' onClick={this.handleRender}>
-          <Icon name='game' />
+        <Menu.Item name='align justify' onClick={this.handleRender}>
+          <Icon name='align justify' />
           Subjects
         </Menu.Item>
-        <Menu.Item name='camera' onClick={this.handleRender}>
-          <Icon name='camera' />
+        <Menu.Item name='list' onClick={this.handleRender}>
+          <Icon name='list' />
           Courses
         </Menu.Item>
-        <Menu.Item name='camera'onClick={this.handleRender}>
-          <Icon name='camera' />
+        <Menu.Item name='clone'onClick={this.handleRender}>
+          <Icon name='clone' />
           Notes
         </Menu.Item>
-        <Menu.Item name='camera'onClick={this.handleRender}>
-          <Icon name='camera' />
+        <Menu.Item name='edit'onClick={this.handleRender}>
+          <Icon name='edit' />
           New Note
+        </Menu.Item>
+        <Menu.Item name='block layout'onClick={this.handleRender}>
+          <Icon name='block layout' />
+          Templates
         </Menu.Item>
       </Sidebar>
       <Sidebar.Pusher>
