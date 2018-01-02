@@ -92,11 +92,11 @@ class NoteNew extends React.Component{
         </Form.Group>
         <Form.Group inline>
           <label>Template</label>
-          <Form.Field control={Radio} label='One' value='1' checked={value === '1'} onChange={this.handleTemplate} />
-          <Form.Field control={Radio} label='Two' value='2' checked={value === '2'} onChange={this.handleTemplate} />
-          <Form.Field control={Radio} label='Three' value='3' checked={value === '3'} onChange={this.handleTemplate} />
-          <Form.Field control={Radio} label='Four' value='4' checked={value === '4'} onChange={this.handleTemplate} />
-          <Form.Field control={Radio} label='Five' value='5' checked={value === '5'} onChange={this.handleTemplate} />
+          <Form.Field control={Radio} label='One' value='1' value='reallyGood' checked={value === '1'} onChange={this.handleTemplate} />
+          <Form.Field control={Radio} label='Two' value='2' value='fire' checked={value === '2'} onChange={this.handleTemplate} />
+          <Form.Field control={Radio} label='Three' value='3' value='couldBeBetter' checked={value === '3'} onChange={this.handleTemplate} />
+          <Form.Field control={Radio} label='Four' value='4' value='sloppyMess' checked={value === '4'} onChange={this.handleTemplate} />
+          <Form.Field control={Radio} label='Five' value='5' value='sloppyMess' checked={value === '5'} onChange={this.handleTemplate} />
         </Form.Group>
         <Form.Field control={Button}>Submit</Form.Field>
       </Form>
