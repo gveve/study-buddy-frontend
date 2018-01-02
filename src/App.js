@@ -7,6 +7,7 @@ import LogIn from './components/LogIn'
 import HeaderContainer from './containers/HeaderContainer'
 import NavRenderContainer from './containers/NavRenderContainer'
 import SignUp from './components/SignUp'
+import NavRenderContainer from './containers/NavRenderContainer'
 
 
 class App extends Component {
@@ -61,7 +62,9 @@ class App extends Component {
             lastName={this.state.lastName}
             signUp={this.signUp}/>
           }/>
-          <Route path='/Buddy' component={NavRenderContainer} render={() => <NavRenderContainer username={this.state.username}/>}/>
+        <Route path='/Buddy' render={() => <NavRenderContainer
+            username={this.state.username}/>
+        }/>
         </Switch>
       </div>
     );

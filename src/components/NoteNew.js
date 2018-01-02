@@ -79,7 +79,6 @@ class NoteNew extends React.Component{
       </div>
     )
   }
-
 }
 
 export default NoteNew;

@@ -14,7 +14,7 @@ import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 class UserShow extends React.Component{
   constructor(props) {
     super(props);
-    console.log(props);
+    console.log('hello', props)
     this.state = {
       appProps:{props},
       visible: false,
