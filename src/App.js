@@ -6,6 +6,7 @@ import { Route, Switch } from 'react-router-dom';
 import LogIn from './components/LogIn'
 import HeaderContainer from './containers/HeaderContainer'
 import SignUp from './components/SignUp'
+import NavRenderContainer from './containers/NavRenderContainer'
 
 
 class App extends Component {
@@ -60,7 +61,9 @@ class App extends Component {
             lastName={this.state.lastName}
             signUp={this.signUp}/>
           }/>
-          <Route path='/Buddy' component={UserShow}/>
+        <Route path='/Buddy' render={() => <NavRenderContainer
+            username={this.state.username}/>
+        }/>
         </Switch>
       </div>
     );

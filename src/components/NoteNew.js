@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 import React from 'react';
 import LogIn from '../components/LogIn'
 import SignUp from '../components/SignUp'
@@ -56,56 +56,30 @@ class NoteNew extends React.Component{
 
     return(
       <div>
-      <Container style={{ padding: '5em 0em' }}>
-      <Segment secondary>
-            <pre>Current value:{value}</pre>
-          </Segment>
-      <Form>
-        <Form.Group widths='equal'>
-          <Form.Field onChange={this.handleChange} name='note_name' value={value} control={Input} label='Note name' placeholder='Note name' />
-          <Form.Field onChange={this.handleChange} name='subject' control={Select} label='Subject' options={sub_options} placeholder='Subject' />
-          <Form.Field onChange={this.handleChange} name='course' value={value} control={Select} label='Course' options={cor_options} placeholder='Course' />
-        </Form.Group>
-        <Form.Group inline>
-          <label>Quantity</label>
-          <Form.Field control={Radio} label='One' value='1' checked={value === '1'} onChange={this.handleChange} />
-          <Form.Field control={Radio} label='Two' value='2' checked={value === '2'} onChange={this.handleChange} />
-          <Form.Field control={Radio} label='Three' value='3' checked={value === '3'} onChange={this.handleChange} />
-        </Form.Group>
-        <Form.Field control={TextArea} label='About' placeholder='Tell us more about you...' />
-        <Form.Field control={Checkbox} label='I agree to the Terms and Conditions' />
-        <Form.Field control={Button}>Submit</Form.Field>
-      </Form>
-      </Container>
-=======
-// patch for the edit Note
-import React from 'react';
-
-
-export default class NoteNew extends React.Component {
-  state = {
-    name: '',
-    subject: '',
-    course: '',
-    template: ''
-  }
-
-  handleChange = (e) => {this.setState({[e.target.name]: e.target.value})}
-
-
-  render(){
-    return (
-      <div>
-        <form >
-          <input></input>
-          <input></input>
-          <input></input>
-        </form>
->>>>>>> fcfb40049106d5e140ac22621c057c51872ba952
+        <Container style={{ padding: '5em 0em' }}>
+        <Segment secondary>
+              <pre>Current value:{value}</pre>
+            </Segment>
+        <Form>
+          <Form.Group widths='equal'>
+            <Form.Field onChange={this.handleChange} name='note_name' value={value} control={Input} label='Note name' placeholder='Note name' />
+            <Form.Field onChange={this.handleChange} name='subject' control={Select} label='Subject' options={sub_options} placeholder='Subject' />
+            <Form.Field onChange={this.handleChange} name='course' value={value} control={Select} label='Course' options={cor_options} placeholder='Course' />
+          </Form.Group>
+          <Form.Group inline>
+            <label>Quantity</label>
+            <Form.Field control={Radio} label='One' value='1' checked={value === '1'} onChange={this.handleChange} />
+            <Form.Field control={Radio} label='Two' value='2' checked={value === '2'} onChange={this.handleChange} />
+            <Form.Field control={Radio} label='Three' value='3' checked={value === '3'} onChange={this.handleChange} />
+          </Form.Group>
+          <Form.Field control={TextArea} label='About' placeholder='Tell us more about you...' />
+          <Form.Field control={Checkbox} label='I agree to the Terms and Conditions' />
+          <Form.Field control={Button}>Submit</Form.Field>
+        </Form>
+        </Container>
       </div>
     )
   }
-
 }
 
 export default NoteNew;

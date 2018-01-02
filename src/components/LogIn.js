@@ -1,5 +1,7 @@
 import React from 'react';
 import { Segment, Button } from 'semantic-ui-react'
+import { BrowserRouter as Router, Route, Switch, Link, Redirect } from 'react-router-dom';
+
 
 const LogIn = ({handleChange, username, password, logIn}) => {
     return (
