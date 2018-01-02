@@ -7,7 +7,6 @@ import LogIn from './components/LogIn'
 import HeaderContainer from './containers/HeaderContainer'
 import NavRenderContainer from './containers/NavRenderContainer'
 import SignUp from './components/SignUp'
-import NavRenderContainer from './containers/NavRenderContainer'
 
 
 class App extends Component {
