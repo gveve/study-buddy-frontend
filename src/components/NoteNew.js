@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React from 'react';
 import LogIn from '../components/LogIn'
 import SignUp from '../components/SignUp'
@@ -17,30 +16,33 @@ class NoteNew extends React.Component{
     }
   }
 
-  handleChange = (event) => {
+  handleChange = (event, {value}) => {
+    // let thing = this.state.props.props.courses[value-1]
+    // this.setState({: thing})
+    console.log(event, {value})
+    // console.log(value)
+    console.log(this.props.courses[value-1]);
     // debugger
-    console.log(event);
   }
 
   subjects = () => {
-    console.log(this.state.props.props.subjects);
-    let subject = this.state.props.props.subjects
+    // console.log(this.state.props.props.subjects);
+    let subject = this.props.subjects
     return subject.map((sub, i) => {
       // debugger;
-        console.log(sub.subject_name)
+        // console.log(sub.subject_name)
         // { key: 'f', text: 'Female', value: 'female' }
         return {key: i, text: `${sub.subject_name}`, value: sub.subject_name}
       })
   }
 
   courses = () => {
-    console.log(this.state.props.props.courses);
+    console.log(this.props.courses);
     let course = this.state.props.props.courses
     return course.map((cor, i) => {
       // debugger;
-        console.log(cor.name)
-        // { key: 'f', text: 'Female', value: 'female' }
-        return {key: i, text: `${cor.name}`, value: cor}
+        // console.log(cor.id)
+        return {key: i, text: `${cor.name}`, value: cor.id }
       })
   }
 
@@ -55,7 +57,7 @@ class NoteNew extends React.Component{
       <div>
       <Container style={{ padding: '5em 0em' }}>
       <Segment secondary>
-            <pre>Current value: {value}</pre>
+            <pre>Current value:{value}</pre>
           </Segment>
       <Form>
         <Form.Group widths='equal'>
@@ -74,38 +76,10 @@ class NoteNew extends React.Component{
         <Form.Field control={Button}>Submit</Form.Field>
       </Form>
       </Container>
-=======
-// patch for the edit Note
-import React from 'react';
-
-
-export default class NoteNew extends React.Component {
-  state = {
-    name: '',
-    subject: '',
-    course: '',
-    template: ''
-  }
-
-  handleChange = (e) => {this.setState({[e.target.name]: e.target.value})}
-
-
-  render(){
-    return (
-      <div>
-        <form>
-          <input></input>
-          <input></input>
-          <input></input>
-        </form>
->>>>>>> 1f4aa1684084a26d5544dd9ab754560cbb15ebc0
       </div>
     )
   }
 
 }
-<<<<<<< HEAD
 
 export default NoteNew;
-=======
->>>>>>> 1f4aa1684084a26d5544dd9ab754560cbb15ebc0
