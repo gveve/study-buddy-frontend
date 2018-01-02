@@ -6,20 +6,24 @@ import HeaderContainer from '../containers/HeaderContainer'
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 
 
-class NotesList extends React.Component{
+class doNotUse extends React.Component{
   constructor() {
     super();
   }
 
-  //all notes each do list {link to note show}
+  //function post request
+
+
   render(){
 
     return(
       <div>
+      <form>
+      </form>
       </div>
     )
   }
 
 }
 
-export default NotesList;
+export default doNotUse;

@@ -14,7 +14,6 @@ class LandingPage extends React.Component{
       <div>
         <div id="firstpage" className="first-page">
           <div id="firstpage-content">
-<<<<<<< HEAD
           <Link to='/login'>
             <Button animated='vertical' color='green' size='massive'>
               <Button.Content visible>Log In</Button.Content>
@@ -29,11 +28,6 @@ class LandingPage extends React.Component{
               <Icon name='user' />
             </Button.Content>
           </Button></Link>
-=======
-          <Link to='/login'><button >Log In</button></Link>
-          <Link to='/signup'><button >Sign Up</button></Link>
-          //if the user comes back valid  then render nav render container instad of log in and sign up
->>>>>>> 4a62570affd682dd7c859532340aaf3e5e816cdf
           </div>
         </div>
       </div>

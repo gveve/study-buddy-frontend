@@ -46,7 +46,6 @@ class App extends Component {
         <HeaderContainer />
         <Switch>
           <Route exact path='/' component={LandingPage} />
-<<<<<<< HEAD
           <Route path='/LogIn' render={() => <LogIn
             handleChange={this.handleChange}
             username={this.state.username}
@@ -62,10 +61,6 @@ class App extends Component {
             signUp={this.signUp}/>
           }/>
           <Route path='/Buddy' component={UserShow}/>
-=======
-          <Route path='/LogIn' component={LogIn}/>
-          <Route path='/SignUp' component={SignUp}/>
->>>>>>> 4a62570affd682dd7c859532340aaf3e5e816cdf
         </Switch>
       </div>
     );
