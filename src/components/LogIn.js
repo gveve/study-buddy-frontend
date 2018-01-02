@@ -13,6 +13,7 @@ class LogIn extends React.Component {
   }
 
   render(){
+    console.log(this.props)
     return (
       <div>
         <input
@@ -29,7 +30,7 @@ class LogIn extends React.Component {
           value={this.state.password}
           onChange={this.handleChange}
         /> <br/>
-      <button onClick={this.signIn}>Login In!</button>
+      <button >Login In!</button>
 
       </div>
     )
