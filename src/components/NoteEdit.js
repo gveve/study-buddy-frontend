@@ -6,20 +6,25 @@ import HeaderContainer from '../containers/HeaderContainer'
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 
 
-class UserShow extends React.Component{
+class NoteEdit extends React.Component{
   constructor() {
     super();
   }
+
+  function patch request
+
 
   render(){
 
     return(
       <div>
-      <h1> Hey! </h1>
+      <form>
+      inputs
+      </form>
       </div>
     )
   }
 
 }
 
-export default UserShow;
+export default NoteEdit;

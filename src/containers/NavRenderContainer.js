@@ -6,7 +6,7 @@ import HeaderContainer from '../containers/HeaderContainer'
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 
 
-class Hamburger extends React.Component{
+class UserShow extends React.Component{
   constructor() {
     super();
   }
@@ -14,15 +14,15 @@ class Hamburger extends React.Component{
   render(){
 
     return(
-      <div>
-      <Subjects show> within nav render 
-      <Courses show> within nav render
-      <notes show> within nav render
-      <new note> within nav render
-      </div>
+    <div>
+    <Subjects show> 
+    <Courses show>
+    <notes show>
+    <new note>
+    </div>
     )
   }
 
 }
 
-export default Hamburger;
+export default UserShow;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Segment } from 'semantic-ui-react'
+import { Segment, Button } from 'semantic-ui-react'
 
 const LogIn = ({handleChange, username, password, logIn}) => {
     return (
@@ -20,7 +20,7 @@ const LogIn = ({handleChange, username, password, logIn}) => {
               value={password}
               onChange={handleChange}
             /> <br/>
-            <button type='submit'>Login In!</button>
+          <Link to="/Buddy"><Button>Log In!</Button></Link>
           </form>
         </Segment>
       </div>
