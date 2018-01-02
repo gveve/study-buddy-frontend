@@ -13,40 +13,68 @@ class NoteNew extends React.Component{
       // debugger;
     this.state = {
       props: {props},
+      courses: [],
+      subjects: [],
+      subject: [],
+      course: [],
+      note_name: '',
+      template: null,
+      filitered_courses: []
     }
   }
 
-  handleChange = (event, {value}) => {
-    // let thing = this.state.props.props.courses[value-1]
-    // this.setState({: thing})
-    console.log(event, {value})
-    // console.log(value)
-    console.log(this.props.courses[value-1]);
-    // debugger
+  handleNote = (event, {value}) => {
+    let subject = this.state.props.props.subjects
+    let course = this.state.props.props.courses
+    this.setState({
+      note_name: value,
+      subjects: subject,
+      courses: course,
+    })
+    // console.log(event, {value})
+  }
+
+  handleSubject = (event, {value}) => {
+    console.log(this.props.subjects[value-1]);
+    let unfiltered = this.state.courses
+    // debugger;
+    let filitered = unfiltered.filter((course) => (course.subject_id === value))
+    let thing = this.props.subjects[value-1]
+    this.setState({
+      subject: thing,
+      filitered_courses: filitered,
+    })
+  }
+
+  handleCourse = (event, {value}) => {
+    let thing = this.props.courses[value-1]
+    this.setState({course: thing})
+  }
+
+  handleTemplate = (event, value) => {
+    console.log(event, value.value)
+    let thing = value.value
+    this.setState({template: thing})
+  }
+
+
+  handleNewNote = (event, {value}) => {
+      //function post request
   }
 
   subjects = () => {
-    // console.log(this.state.props.props.subjects);
-    let subject = this.props.subjects
+    let subject = this.state.props.props.subjects
     return subject.map((sub, i) => {
-      // debugger;
-        console.log(sub.subject_name)
-        // { key: 'f', text: 'Female', value: 'female' }
-        return {key: i, text: `${sub.subject_name}`, value: sub.subject_name}
+        return {key: i, text: `${sub.subject_name}`, value: sub.id}
       })
   }
 
   courses = () => {
-    console.log(this.props.courses);
-    let course = this.state.props.props.courses
+    let course = this.state.filitered_courses
     return course.map((cor, i) => {
-      // debugger;
-        // console.log(cor.id)
         return {key: i, text: `${cor.name}`, value: cor.id }
       })
   }
-
-  //function post request
 
   render(){
     const { value } = this.state
@@ -56,23 +84,20 @@ class NoteNew extends React.Component{
     return(
       <div>
       <Container style={{ padding: '5em 0em' }}>
-      <Segment secondary>
-            <pre>Current value:{value}</pre>
-          </Segment>
       <Form>
         <Form.Group widths='equal'>
-          <Form.Field onChange={this.handleChange} name='note_name' value={value} control={Input} label='Note name' placeholder='Note name' />
-          <Form.Field onChange={this.handleChange} name='subject' control={Select} label='Subject' options={sub_options} placeholder='Subject' />
-          <Form.Field onChange={this.handleChange} name='course' value={value} control={Select} label='Course' options={cor_options} placeholder='Course' />
+          <Form.Field onChange={this.handleNote} name='note_name' value={value} control={Input} label='Note name' placeholder='Note name' />
+          <Form.Field onChange={this.handleSubject} name='subject' control={Select} label='Subject' options={sub_options} placeholder='Subject' />
+          <Form.Field onChange={this.handleCourse} name='course' value={value} control={Select} label='Course' options={cor_options} placeholder='Course' />
         </Form.Group>
         <Form.Group inline>
-          <label>Quantity</label>
-          <Form.Field control={Radio} label='One' value='1' checked={value === '1'} onChange={this.handleChange} />
-          <Form.Field control={Radio} label='Two' value='2' checked={value === '2'} onChange={this.handleChange} />
-          <Form.Field control={Radio} label='Three' value='3' checked={value === '3'} onChange={this.handleChange} />
+          <label>Template</label>
+          <Form.Field control={Radio} label='One' value='1' checked={value === '1'} onChange={this.handleTemplate} />
+          <Form.Field control={Radio} label='Two' value='2' checked={value === '2'} onChange={this.handleTemplate} />
+          <Form.Field control={Radio} label='Three' value='3' checked={value === '3'} onChange={this.handleTemplate} />
+          <Form.Field control={Radio} label='Four' value='4' checked={value === '4'} onChange={this.handleTemplate} />
+          <Form.Field control={Radio} label='Five' value='5' checked={value === '5'} onChange={this.handleTemplate} />
         </Form.Group>
-        <Form.Field control={TextArea} label='About' placeholder='Tell us more about you...' />
-        <Form.Field control={Checkbox} label='I agree to the Terms and Conditions' />
         <Form.Field control={Button}>Submit</Form.Field>
       </Form>
       </Container>

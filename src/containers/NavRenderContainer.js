@@ -76,7 +76,7 @@ class UserShow extends React.Component{
     </Container>
     <div>
     <Sidebar.Pushable as={Segment} >
-      <Sidebar as={Menu} animation='scale down' width='thin' visible={visible} icon='labeled' vertical inverted>
+      <Sidebar as={Menu} animation='slide along' width='thin' visible={visible} icon='labeled' vertical inverted>
         <Menu.Item name='home'>
           <Icon name='home' />
           Home
