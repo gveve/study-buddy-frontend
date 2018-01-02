@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Game of Dethroned(s)</title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
+    <link rel="stylesheet" href="./css/index.css">
+    <link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
+  </head>
+  <body>
+    <h1 id=title>Game of Dethrones</h1>
+    <div id="mySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    </div>
+    <span id="previous_steps" style="font-size:30px;cursor:pointer;color:white;margin:50px;visibility:hidden;" onclick="openNav()">&#9776; Previous Steps</span>
+    <div id="game-modal">
+      <form id="user-form" method="post">
+        <h1>Create an Account</h1>
+        <h2>Character Name: <br><input id="form-character" type="text" placeholder="character name"></h2>
+        <h2>Favorite Food: <br><input id="form-food" type="text" placeholder="favorite food"></h2>
+        <h2>First Job: <br><input id="form-job" type="text" placeholder="first job"></h2>
+        <div id="not-dragon-button">
+          <button id="dragon-button" type="submit" value="Play Game of Dethroned">Play!</button>
+        </div>
+        <div id="dragon-text">So you might think you coud conquer all seven kingdoms... But bad news, you have more enemies than you know. Do you have what it takes to survive Game of dethrones?</div>
+     </form>
+
+      <h2 id="stage-text"></h2>
+      <h3 id="description-text"></h3>
+      <div id="button-container"></div>
+    </div>
+
+    <div style="visibility:hidden">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/s7L2PVdrb_8?listType=user_uploads&&loop=1&autoplay=1&rel=0&showinfo=0&controls=0&autohide=1" frameborder="0"gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+    </div>
+    <script type="text/javascript" src="src/index.js"></script>
+    <script>
+      function openNav() {
+          document.getElementById("mySidenav").style.width = "250px";
+      }
+      function closeNav() {
+          document.getElementById("mySidenav").style.width = "0";
+      }
+    </script>
+  </body>
+</html>
