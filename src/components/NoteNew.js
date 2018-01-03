@@ -14,44 +14,20 @@ class NoteNew extends React.Component{
       // debugger;
     this.state = {
       props: {props},
-      id: '8',
-      username: 'genny',
-      first_name: 'genny',
-      last_name: 'genny',
       courses: [],
       subjects: [],
       subject: [],
       course: [],
       note_name: '',
-      template: null,
       filitered_courses: []
     }
   }
 
   handleNewNote = (event) => {
-      console.log(this.state.course.id);
-      // const newUserSubject = {method: 'POST',
-      // headers: {
-      //   'Accept': 'application/json',
-      //   'Content-Type': 'application/json'
-      // },
-      // body: JSON.stringify({
-      //   user_id: this.state.id,
-      //   sub_header_id: this.state.course.id
-      // })}
-      const newNote = {method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        name: this.state.note_name,
-        user_id: this.state.id,
-        sub_header_id: this.state.course.id,
-        subject_id: this.state.subject.id,
-      })}
-      fetch('http://localhost:3000/api/v1/notes', newNote)
-      {this.handleEdit}
+    let thing = this.state
+    console.log(this.state);
+    thing.props.props.handleEdit(this.state)
+    // debugger
   }
 
   handleNote = (event, {value}) => {
@@ -66,6 +42,7 @@ class NoteNew extends React.Component{
   }
 
   handleSubject = (event, {value}) => {
+    console.log(this.state.props.props.courses);
     console.log(this.props.subjects[value-1]);
     let unfiltered = this.state.courses
     // debugger;
@@ -83,6 +60,7 @@ class NoteNew extends React.Component{
   }
 
   subjects = () => {
+    // debugger
     let subject = this.state.props.props.subjects
     return subject.map((sub, i) => {
         return {key: i, text: `${sub.subject_name}`, value: sub.id}

@@ -1,17 +1,24 @@
 import React from 'react';
-import { Header, Segment } from 'semantic-ui-react'
+import { Header, Segment, Button, Icon } from 'semantic-ui-react'
+import { BrowserRouter as Router, Route, Switch, Link, Redirect } from 'react-router-dom';
 
-class HeaderContainer extends React.Component{
 
-  render(){
+const HeaderContainer = ({loggedIn, username, logOut}) => {
     return(
       <div>
-        <Segment>
-          <Header as='h1' textAlign='center'>Study Buddy</Header>
-        </Segment>
+        <Segment.Group horizontal >
+          <Segment color='green'><Header as='h1' textAlign='center'>Study Buddy</Header></Segment>
+          {loggedIn ? <Segment><Header as='h1' textAlign='center'>Welcome {username}</Header></Segment> : null}
+          {loggedIn ? <Segment><Link to='/'><Button animated='fade' color='red' floated='right' onClick={logOut}>
+            <Button.Content visible>Sign Out</Button.Content>
+            <Button.Content hidden>
+              <Icon name='sign out' />
+            </Button.Content>
+          </Button></Link></Segment> : null}
+        </Segment.Group>
       </div>
     )
-  }
+
 }
 
 

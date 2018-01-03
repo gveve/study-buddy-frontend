@@ -2,9 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch, Link, Redirect } from 'react-router-dom';
 import { Segment, Button } from 'semantic-ui-react'
 
-const SignUp = ({handleChange, username, password, firstName, lastName, signUp}) => {
-
-
+const SignUp = ({handleChange, username, password, firstName, lastName, signUp}) =>{
     return (
       <div>
         <Segment padded inverted color='olive' attached='top'>

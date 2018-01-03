@@ -27,6 +27,26 @@ class NoteEdit extends React.Component{
     }
   }
 
+  handleSave = () => {
+    // // let userInfo = this.state.props.props.userInfo
+    //   console.log(this.state.course.id);
+    //   const newNote = {method: 'POST',
+    //   headers: {
+    //     'Accept': 'application/json',
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify({
+    //     name: this.state.note_name,
+    //     user_id: userInfo.username,
+    //     sub_header_id: this.state.course,
+    //     subject_id: this.state.subject,
+    //     type_id: "thing",
+    //     content: "thing",
+    //   })}
+    //   // debugger;
+    //   fetch('http://localhost:3000/api/v1/notes', newNote)
+  }
+
   handleChange = (event) => {
     console.log(event);
     debugger

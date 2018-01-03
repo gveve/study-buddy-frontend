@@ -1,11 +1,11 @@
 import React from 'react';
 import { Menu } from 'semantic-ui-react';
 
-const NavBar = () => {
+const SideBar = () => {
   <Menu>
 
   </Menu>
 
 }
 
-export default NavBar
+export default SideBar

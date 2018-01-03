@@ -15,13 +15,8 @@ import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 class NavRenderContainer extends React.Component{
   constructor(props) {
     super(props);
-    console.log('hello', props)
     this.state = {
       userInfo:{props},
-      id: '8',
-      username: 'genny',
-      first_name: 'genny',
-      last_name: 'genny',
       visible: false,
       type: '',
       subjects: [],
@@ -50,8 +45,9 @@ class NavRenderContainer extends React.Component{
 
   render(){
     const { visible } = this.state
-    const handleEdit = () => {
-      content = <NoteEdit courses={this.state.courses} subjects={this.state.subjects} userInfo={this.state} />
+    const handleEdit = (props) => {
+      // debugger
+      content = <NoteEdit props={props} />
     }
 
     let content
