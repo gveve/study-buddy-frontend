@@ -4,7 +4,7 @@ import './App.css';
 import LandingPage from './containers/LandingPage'
 import { Route, Switch } from 'react-router-dom';
 import LogIn from './components/LogIn'
-import ReallyGood from './components/ReallyGood'
+import NoteEdit from './components/NoteEdit'
 import HeaderContainer from './containers/HeaderContainer'
 import NavRenderContainer from './containers/NavRenderContainer'
 import SignUp from './components/SignUp'
@@ -68,7 +68,7 @@ class App extends Component {
         <Route path='/Buddy' render={() => <NavRenderContainer
             userInfo={this.state}/>
         }/>
-        <Route path='/ReallyGood' render={() => <ReallyGood
+        <Route path='/newnote' render={() => <NoteEdit
             userInfo={this.state}/>
         }/>
         </Switch>

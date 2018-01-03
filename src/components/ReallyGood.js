@@ -8,6 +8,7 @@ import React from 'react';
 // import LandingPage from '.../containers/LandingPage'
 // import HeaderContainer from '.../containers/HeaderContainer'
 import NavRenderContainer from '../containers/NavRenderContainer'
+import ReactDOM from 'react-dom';
 import { Grid, Sticky, Table, Visibility, Container, Divider, Header, Menu, Message, Segment, Sidebar, Button, Image, Icon, Input, Form } from 'semantic-ui-react'
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 
@@ -26,56 +27,39 @@ class reallyGood extends React.Component{
     }
   }
 
-  //function post request
-
-  // createProject() {
-  // const item = this.state.itemArray;
-  // const title = '';
-  // const text = '';
-  // item.push({ title, text })
-  // this.setState({itemArray: item})
-  // }
-
-  // handleInput = (event, { value }) => {
-  //   const bulletArray = this.state.bullets
-  //   let item = value
-  //   bulletArray.push(item)
-  //   this.setState({bulletArray: item})
-  //   // debugger
-  // }
-  //
-  // handleInput = (event, { value }) => {
-  //   let bulletArray = this.state.bullets
-  //   debugger
-  // }
 render(){
+
   let treated = new Object();
   let inputNumber = 1;
 
-  function addOne({value}) {
-    debugger
-    //Create an input type dynamically.
+  function addOne(event) {
     inputNumber++
-    let element = React.createElement("input", { type: "text", name:"input" +inputNumber, onkeyup:{keyUp} })
+    let element = React.createElement("input", { type:"text", name:"input"+inputNumber, onKeyUp:{keyUp} })
 
-    let foo = document.getElementById("myForm");
+    debugger
+  }
 
-    //Append the element in page (in span).
-    // foo.appendChild(element);
-    }
-
-    function keyUp() {
-      if (treated[this.name] != 1){ addOne(); treated[this.name] = '1'; }
+    function keyUp(event) {
+      // debugger
+      if (event.target.value.length > 3 && treated[event.target.name] != 1){ addOne(); treated[event.target.name] = '1'; }
     }
 
     return(
       <div>
-        <Form id="myForm">
-        <Form.Field onKeyUp={addOne} name='input1' control={Input} />
-        </Form>
+      <Form id="myForm">
+      <div class="field">
+      <div class="ui input">
+      <input type="text" name="input1" value={this.state.value} onKeyUp={keyUp}>
+      </input>
+      </div>
+      </div>
+      </Form>
       </div>
     )
   }
+
+
+
   // <Container style={{ padding: '5em 0em' }}>
   // <h1> reallyGood </h1>
   // <Form>

@@ -5,12 +5,7 @@ import SubjectsShow from '../components/SubjectsShow'
 import CoursesShow from '../components/CoursesShow'
 import NotesList from '../components/NotesList'
 import NoteNew from '../components/NoteNew'
-import CouldBeBetter from '../components/CouldBeBetter'
-import DoNotUse from '../components/DoNotUse'
-import Fire from '../components/Fire'
-import ReallyGood from '../components/ReallyGood'
-import SloppyMess from '../components/SloppyMess'
-import Templates from '../components/Templates'
+import NoteEdit from '../components/NoteEdit'
 import LandingPage from '../containers/LandingPage'
 import HeaderContainer from '../containers/HeaderContainer'
 import { Grid, Sticky, Table, Visibility, Container, Divider, Header, Menu, Message, Segment, Sidebar, Button, Image, Icon, Input} from 'semantic-ui-react'
@@ -76,24 +71,9 @@ class UserShow extends React.Component{
       case 'New Note':
           content = <NoteNew courses={this.state.courses} subjects={this.state.subjects} setTemplate={this.setTemplate}/>
         break;
-      case 'Templates':
-          content = <Templates courses={this.state.courses} subjects={this.state.subjects}/>
+      case 'Note Edit':
+          content = <NoteEdit courses={this.state.courses} subjects={this.state.subjects}/>
         break;
-      case 'ReallyGood':
-          content = <ReallyGood courses={this.state.courses} subjects={this.state.subjects}/>
-        break;
-        case 'SloppyMess':
-            content = <SloppyMess courses={this.state.courses} subjects={this.state.subjects}/>
-          break;
-          case 'Fire':
-              content = <Fire courses={this.state.courses} subjects={this.state.subjects}/>
-            break;
-            case 'DoNotUse':
-                content = <DoNotUse courses={this.state.courses} subjects={this.state.subjects}/>
-              break;
-              case 'CouldBeBetter':
-                  content = <CouldBeBetter courses={this.state.courses} subjects={this.state.subjects}/>
-                break;
       default:
           content = <p> Hey! </p>
 
@@ -126,15 +106,11 @@ class UserShow extends React.Component{
           <Icon name='edit' />
           New Note
         </Menu.Item>
-        <Menu.Item name='block layout'onClick={this.handleRender}>
-          <Icon name='block layout' />
-          Templates
-        </Menu.Item>
       </Sidebar>
       <Sidebar.Pusher>
       <Segment
         textAlign='center'
-        style={{ minHeight: 700}}
+        style={{ minHeight: 500}}
         vertical>
         <h1> Hey friend </h1>
         {content}
