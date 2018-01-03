@@ -92,10 +92,10 @@ class App extends Component {
             signUp={this.signUp}/>
           }/>
         <Route path='/Buddy' render={() => <NavRenderContainer
-            userInfo={this.state}/>
+            userInfo={this.state} currentUser={this.state.currentUser}/>
         }/>
         <Route path='/newnote' render={() => <NoteEdit
-            userInfo={this.state}/>
+            userInfo={this.state} currentUser={this.state.currentUser}/>
         }/>
         </Switch>
       </div>

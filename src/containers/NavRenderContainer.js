@@ -5,7 +5,6 @@ import SubjectsShow from '../components/SubjectsShow'
 import CoursesShow from '../components/CoursesShow'
 import NotesList from '../components/NotesList'
 import NoteNew from '../components/NoteNew'
-import NoteEdit from '../components/NoteEdit'
 import LandingPage from '../containers/LandingPage'
 import HeaderContainer from '../containers/HeaderContainer'
 import { Grid, Sticky, Table, Visibility, Container, Divider, Header, Menu, Message, Segment, Sidebar, Button, Image, Icon, Input} from 'semantic-ui-react'
@@ -45,10 +44,6 @@ class NavRenderContainer extends React.Component{
 
   render(){
     const { visible } = this.state
-    const handleEdit = (props) => {
-      // debugger
-      content = <NoteEdit props={props} />
-    }
 
     let content
 
@@ -66,10 +61,7 @@ class NavRenderContainer extends React.Component{
           content = <NotesList courses={this.state.courses} subjects={this.state.subjects}/>
         break;
       case 'New Note':
-          content = <NoteNew courses={this.state.courses} subjects={this.state.subjects} userInfo={this.state.userInfo} handleEdit={handleEdit} />
-        break;
-      case 'Note Edit':
-          content = <NoteEdit courses={this.state.courses} subjects={this.state.subjects} userInfo={this.state.userInfo}/>
+          content = <NoteNew courses={this.state.courses} subjects={this.state.subjects} userInfo={this.state.userInfo} currentUser={this.state.userInfo.props.currentUser} />
         break;
       default:
           content = <p> Click menu to get started! </p>
