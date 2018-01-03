@@ -20,40 +20,37 @@ class NotesList extends React.Component{
   componentDidMount = () => {
     fetch("http://localhost:3000/api/v1/notes").then(res => res.json()).then(response => this.setState({notes: response}))
   }
+
+  onTrans = () => {
+    let notes = this.state.notes
+    return notes.map((note, i) => {
+      console.log(note);
+      return (
+        <Card>
+        <Card.Content>
+          <Image floated='right' size='mini' src='https://books.google.com/books/content?id=cjHkn_1F62oC&printsec=frontcover&img=1&zoom=1&edge=curl&imgtk=AFLRE70BAwyqhdE53t7_N78qSx4IkUGBrQ-Kb5N_2ZjtlgHPnp-Odmp0q5l8PCznF31fww4UTQtrR5OeYBSIGxMIWIHIvqmybw7HOfQEczaVgH8jQYFFNNQ-oZF-GcWabrGmJeAzu382' />
+          <Card.Header>
+            Note Name: {note.name}
+          </Card.Header>
+          <Card.Meta>
+          </Card.Meta>
+          <Card.Description>
+          </Card.Description>
+        </Card.Content>
+        <Card.Content extra>
+        </Card.Content>
+        </Card>
+      )
+    })
+  }
   //all notes each do list {link to note show}
   render(){
 
-    function onTrans() {
-      return this.state.notes.map((note, i) => {
-        console.log(note);
-        return (
-          <Card>
-  <Card.Content>
-    <Image floated='right' size='mini' src='/assets/images/avatar/large/steve.jpg' />
-    <Card.Header>
-      Steve Sanders
-    </Card.Header>
-    <Card.Meta>
-      Friends of Elliot
-    </Card.Meta>
-    <Card.Description>
-      Steve wants to add you to the group <strong>best friends</strong>
-    </Card.Description>
-  </Card.Content>
-  <Card.Content extra>
-    <div className='ui two buttons'>
-      <Button basic color='green'>Approve</Button>
-      <Button basic color='red'>Decline</Button>
-    </div>
-  </Card.Content>
-</Card>
-        )
-      })
-    }
-
     return(
       <div>
-      {onTrans()}
+      <Container style={{ padding: '5em 0em' }}>
+      {this.onTrans()}
+      </Container>
       </div>
     )
   }
