@@ -5,7 +5,7 @@ import { Segment, Button } from 'semantic-ui-react'
 const SignUp = ({handleChange, username, password, firstName, lastName, signUp}) =>{
     return (
       <div>
-        <Segment padded inverted color='olive' attached='top'>
+        <Segment padded inverted color='orange' attached='top'>
           <input
             type='text'
             placeholder='First Name'

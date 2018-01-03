@@ -9,6 +9,7 @@ import HeaderContainer from './containers/HeaderContainer'
 import NavRenderContainer from './containers/NavRenderContainer'
 import api from './AuthAdapter/api'
 import SignUp from './components/SignUp'
+import { Segment } from 'semantic-ui-react'
 
 class App extends Component {
   state = {
@@ -102,6 +103,7 @@ class App extends Component {
     const AuthUser = this.authorize(NavRenderContainer)
     return (
       <div className="App">
+        <Segment inverted color='black'>
         <HeaderContainer loggedIn={this.state.loggedIn}
           logOut={this.logOut}
           username={this.state.currentUser.username}/>
@@ -129,6 +131,7 @@ class App extends Component {
             userInfo={this.state}/>
         }/>
         </Switch>
+      </Segment>
       </div>
     );
   }

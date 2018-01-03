@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Route, Switch, Link, Redirect } from 'react-ro
 const LogIn = ({handleChange, username, password, logIn}) => {
     return (
       <div>
-        <Segment padded inverted color='olive' attached='top' >
+        <Segment padded inverted color='green' attached='top' >
             <Input
               type='text'
               placeholder='Username'
