@@ -9,7 +9,7 @@ import React from 'react';
 // import HeaderContainer from '.../containers/HeaderContainer'
 import NavRenderContainer from '../containers/NavRenderContainer'
 import ReactDOM from 'react-dom';
-import { Grid, Sticky, Table, Visibility, Container, Divider, Header, Menu, Message, Segment, Sidebar, Button, Image, Icon, Input, Form } from 'semantic-ui-react'
+import { Grid, Sticky, Table, Visibility, Container, Divider, Header, Menu, Message, Segment, Sidebar, Button, Image, Icon, Input, Form, TextArea} from 'semantic-ui-react'
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 
 class NoteEdit extends React.Component{
@@ -17,14 +17,23 @@ class NoteEdit extends React.Component{
     super(props);
 
     this.state = {
-      bullets: [],
-      definitions: [],
-      imgs: [],
-      texts: [],
-      codes: [],
-      equations: [],
-      figures: []
+      bullet: [],
+      definition: [],
+      img: [],
+      text: [],
+      code: [],
+      equation: [],
+      figure: []
     }
+  }
+
+  handleChange = (event) => {
+    console.log(event);
+    debugger
+  }
+
+  handleSubmit = () => {
+
   }
 
 render(){
@@ -33,67 +42,66 @@ render(){
     return(
       <div>
       <Container style={{ padding: '5em 0em' }}>
-      <h1> NoteEdit </h1>
-      <Form>
+      <h1> Create Your Note </h1>
+      <Form onSubmit={this.handleSubmit}>
       <Grid celled>
         <Grid.Row>
-          <Grid.Column width={8}>
-          <Form.Field onChange={this.handleInput} name='bullet' value={ value } control={Input} label='bullet' placeholder='bullet list' />
-          <Form.Field onChange={this.handleInput2} name='bullet' value={ value } control={Input} label='bullet' placeholder='bullet list' />
+          <Grid.Column width={3}>
+          <Form.Field control={Input} label='img' name='img' placeholder='Add Image URL' onChange={this.handleChange}/>
+          <Button color='green' size='small'>Add Another Img</Button>
           </Grid.Column>
-          <Grid.Column width={8}>
-          <Form.Field onChange={this.handleInput} name='bullet' value={ value } control={Input} label='bullet' placeholder='bullet list' />
-          <Form.Field onChange={this.handleInput2} name='bullet' value={ value } control={Input} label='bullet' placeholder='bullet list' />
+          <Grid.Column width={13}>
+          <Form.Field control={TextArea} label='text' name='text' placeholder='Tell us more about your note...' onChange={this.handleChange} />
           </Grid.Column>
         </Grid.Row>
-        </Grid>
+        <Grid.Row>
+          <Grid.Column width={3}>
+          <Form.Field control={Input} label='bullet' placeholder='Bullet' onChange={this.handleChange} />
+          <Form.Field control={Input} label='bullet' placeholder='Bullet' onChange={this.handleChange}/>
+          <Form.Field control={Input} label='bullet' placeholder='Bullet' onChange={this.handleChange}/>
+          <Form.Field control={Input} label='bullet' placeholder='Bullet' onChange={this.handleChange}/>
+          <Button color='green' size='small'>Add Another Bullet</Button>
+          </Grid.Column>
+          <Grid.Column width={10}>
+          <Form.Field control={TextArea} label='text' placeholder='Add intro paragraph' onChange={this.handleChange}/>
+          <Form.Field control={TextArea} label='text' placeholder='Add supporting paragraph' onChange={this.handleChange}/>
+          <Form.Field control={TextArea} label='text' placeholder='Add summary paragraph' onChange={this.handleChange}/>
+          <Button color='green' size='small'>Add Another Text Area</Button>
+          </Grid.Column>
+          <Grid.Column width={3}>
+          <Form.Field control={Input} label='equation' placeholder='Equation' onChange={this.handleChange}/>
+          <Form.Field control={Input} label='equation' placeholder='Equation' onChange={this.handleChange}/>
+          <Form.Field control={Input} label='equation' placeholder='Equation' onChange={this.handleChange}/>
+          <Button color='green' size='small'>Add Another Equation</Button>
+          </Grid.Column>
+        </Grid.Row>
+        <Grid.Row>
+          <Grid.Column width={3}>
+          <Form.Field control={Input} label='definition' placeholder='Add Definition' onChange={this.handleChange}/>
+          <Form.Field control={Input} label='definition' placeholder='Add Definition' onChange={this.handleChange}/>
+          <Form.Field control={Input} label='definition' placeholder='Add Definition' onChange={this.handleChange}/>
+          <Form.Field control={Input} label='definition' placeholder='Add Definition' onChange={this.handleChange}/>
+          <Button color='green' size='small'>Add Another Definition</Button>
+          </Grid.Column>
+          <Grid.Column width={10}>
+          <Form.Field><label label='code' onChange={this.handleChange} >Add Code Snippet</label><input /></Form.Field>
+          <Form.Field><label label='code' onChange={this.handleChange} >Add Code Snippet</label><input /></Form.Field>
+          <Form.Field><label label='code' onChange={this.handleChange} >Add Code Snippet</label><input /></Form.Field>
+          <Form.Field><label label='code' onChange={this.handleChange} >Add Code Snippet</label><input /></Form.Field>
+          <Button color='green' size='small'>Add Another Snippet</Button>
+          </Grid.Column>
+          <Grid.Column width={3}>
+          <Form.Field control={Input} label='figure' placeholder='Add Figure URL' onChange={this.handleChange}/>
+          <Button color='green' size='small'>Add Another Figure</Button>
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
         </Form>
+          <Button type="submit" color='orange' size='massive'>Save Note</Button>
       </Container>
       </div>
     )
   }
-
-
-
-  // <Container style={{ padding: '5em 0em' }}>
-  // <h1> NoteEdit </h1>
-  // <Form>
-  // <Grid celled>
-  //   <Grid.Row>
-  //     <Grid.Column width={8}>
-  //     <Form.Field onChange={this.handleInput} name='bullet' value={ value } control={Input} label='bullet' placeholder='bullet list' />
-  //     <Form.Field onChange={this.handleInput2} name='bullet' value={ value } control={Input} label='bullet' placeholder='bullet list' />
-  //     </Grid.Column>
-  //     <Grid.Column width={8}>
-  //     <Form.Field onChange={this.handleInput} name='bullet' value={ value } control={Input} label='bullet' placeholder='bullet list' />
-  //     <Form.Field onChange={this.handleInput2} name='bullet' value={ value } control={Input} label='bullet' placeholder='bullet list' />
-  //     </Grid.Column>
-  //   </Grid.Row>
-  //   </Grid>
-  //   </Form>
-  // </Container>
-
-// render() {
-//   return (
-//     <div className="Overview">
-//       <p>Overview</p>
-//       <button onClick={this.createProject.bind(this)}>New Project</button>
-//       <Project />
-//       <div>
-//         {this.state.itemArray.map((item, index) => {
-//           return (
-//             <div className="box" key={index}>
-//                 <div>
-//                  <h2>{item.title}</h2>
-//                  <p>{item.text}</p>
-//                </div>
-//             </div>
-//           )
-//         })}
-//       </div>
-//     </div>
-//   );
-// }
 
 }
 

@@ -37,7 +37,7 @@ class App extends Component {
       first_name: this.state.firstName,
       last_name: this.state.lastName
     })}
-    fetch('http://localhost:3000/users', newUser)
+    fetch('http://localhost:3000/api/v1/users', newUser)
   }
 
   logIn = () => {

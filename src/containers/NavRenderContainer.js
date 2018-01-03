@@ -12,23 +12,26 @@ import { Grid, Sticky, Table, Visibility, Container, Divider, Header, Menu, Mess
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 
 
-class UserShow extends React.Component{
+class NavRenderContainer extends React.Component{
   constructor(props) {
     super(props);
     console.log('hello', props)
     this.state = {
-      appProps:{props},
+      userInfo:{props},
+      id: '8',
+      username: 'genny',
+      first_name: 'genny',
+      last_name: 'genny',
       visible: false,
       type: '',
       subjects: [],
       courses: [],
-      template: ''
     }
   }
 
   showResponse = () => {
-    fetch('http://localhost:3000/subjects').then(res => res.json()).then(response => this.setState({subjects:response}))
-      fetch('http://localhost:3000/sub_headers').then(res => res.json()).then(response => this.setState({courses:response}))
+    fetch('http://localhost:3000/api/v1/subjects').then(res => res.json()).then(response => this.setState({subjects:response}))
+      fetch('http://localhost:3000/api/v1/sub_headers').then(res => res.json()).then(response => this.setState({courses:response}))
   }
 
   componentDidMount = () => {
@@ -43,22 +46,20 @@ class UserShow extends React.Component{
       })
     }
 
-    setTemplate = (event) => {
-      // debugger;
-      console.log(event)
-      this.setState({
-        type: event.value,
-        template: event.value
-      })
-    }
 
 
   render(){
     const { visible } = this.state
+    const handleEdit = () => {
+      content = <NoteEdit courses={this.state.courses} subjects={this.state.subjects} userInfo={this.state} />
+    }
 
     let content
 
     switch (this.state.type) {
+      case 'Home':
+          content = <LandingPage />
+        break;
       case 'Subjects':
           content = <SubjectsShow response={this.state.subjects} />
         break;
@@ -69,13 +70,13 @@ class UserShow extends React.Component{
           content = <NotesList courses={this.state.courses} subjects={this.state.subjects}/>
         break;
       case 'New Note':
-          content = <NoteNew courses={this.state.courses} subjects={this.state.subjects} setTemplate={this.setTemplate}/>
+          content = <NoteNew courses={this.state.courses} subjects={this.state.subjects} userInfo={this.state.userInfo} handleEdit={handleEdit} />
         break;
       case 'Note Edit':
-          content = <NoteEdit courses={this.state.courses} subjects={this.state.subjects}/>
+          content = <NoteEdit courses={this.state.courses} subjects={this.state.subjects} userInfo={this.state.userInfo}/>
         break;
       default:
-          content = <p> Hey! </p>
+          content = <p> Click menu to get started! </p>
 
     }
     return(
@@ -86,7 +87,7 @@ class UserShow extends React.Component{
     <div>
     <Sidebar.Pushable as={Segment} >
       <Sidebar as={Menu} animation='slide along' width='thin' visible={visible} icon='labeled' vertical inverted>
-        <Menu.Item name='home'>
+        <Menu.Item name='home'onClick={this.handleRender}>
           <Icon name='home' />
           Home
         </Menu.Item>
@@ -112,7 +113,7 @@ class UserShow extends React.Component{
         textAlign='center'
         style={{ minHeight: 500}}
         vertical>
-        <h1> Hey friend </h1>
+        <h1> Hey Buddy </h1>
         {content}
       </Segment>
       </Sidebar.Pusher>
@@ -124,4 +125,4 @@ class UserShow extends React.Component{
 
 }
 
-export default UserShow;
+export default NavRenderContainer;

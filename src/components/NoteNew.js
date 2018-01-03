@@ -3,16 +3,21 @@ import LogIn from '../components/LogIn'
 import SignUp from '../components/SignUp'
 import LandingPage from '../containers/LandingPage'
 import HeaderContainer from '../containers/HeaderContainer'
+import NavRenderContainer from '../containers/NavRenderContainer'
 import { Grid, Sticky, Table, Visibility, Container, Divider, Header, Menu, Message, Segment, Sidebar, Button, Image, Icon, Checkbox, Form, Input, Radio, Select, TextArea } from 'semantic-ui-react'
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 
 class NoteNew extends React.Component{
   constructor(props) {
     super(props);
-      console.log(props);
+      console.log("newnote", props);
       // debugger;
     this.state = {
       props: {props},
+      id: '8',
+      username: 'genny',
+      first_name: 'genny',
+      last_name: 'genny',
       courses: [],
       subjects: [],
       subject: [],
@@ -21,6 +26,32 @@ class NoteNew extends React.Component{
       template: null,
       filitered_courses: []
     }
+  }
+
+  handleNewNote = (event) => {
+      console.log(this.state.course.id);
+      // const newUserSubject = {method: 'POST',
+      // headers: {
+      //   'Accept': 'application/json',
+      //   'Content-Type': 'application/json'
+      // },
+      // body: JSON.stringify({
+      //   user_id: this.state.id,
+      //   sub_header_id: this.state.course.id
+      // })}
+      const newNote = {method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: this.state.note_name,
+        user_id: this.state.id,
+        sub_header_id: this.state.course.id,
+        subject_id: this.state.subject.id,
+      })}
+      fetch('http://localhost:3000/api/v1/notes', newNote)
+      {this.handleEdit}
   }
 
   handleNote = (event, {value}) => {
@@ -51,19 +82,6 @@ class NoteNew extends React.Component{
     this.setState({course: thing})
   }
 
-  handleTemplate = (event, value) => {
-    console.log(event, value.value)
-    let thing = value.value
-    console.log(this.props.setTemplate);
-    this.props.setTemplate(value)
-    this.setState({template: thing})
-  }
-
-
-  handleNewNote = (event, {value}) => {
-      //function post request
-  }
-
   subjects = () => {
     let subject = this.state.props.props.subjects
     return subject.map((sub, i) => {
@@ -86,7 +104,7 @@ class NoteNew extends React.Component{
     return(
       <div>
       <Container style={{ padding: '5em 0em' }}>
-      <Form>
+      <Form onSubmit={this.handleNewNote}>
         <Form.Group widths='equal'>
           <Form.Field onChange={this.handleNote} name='note_name' value={value} control={Input} label='Note name' placeholder='Note name' />
           <Form.Field onChange={this.handleSubject} name='subject' control={Select} label='Subject' options={sub_options} placeholder='Subject' />
