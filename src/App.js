@@ -24,11 +24,12 @@ class App extends Component {
 
     const token = localStorage.getItem('token')
     if (token) {
-        api.auth.getCurrentUser().then(user =>{
-          const currentUser = { currentUser: user };
-          this.setState({currentUser})
+        api.auth.getCurrentUser().then(currentUser =>{
+          this.setState({currentUser, loggedIn: true}, this.props.history.push('/buddy'))
         })
       };
+
+
     }
 
   handleChange = (e) => {this.setState({[e.target.name]: e.target.value})}
@@ -56,7 +57,7 @@ class App extends Component {
   logIn = () => {
     api.auth.login(this.state.username, this.state.password).then(user => {
         localStorage.setItem('token', user.token)
-        this.setState({currentUser: user, loggedIn: true})
+        this.setState({currentUser: user, loggedIn: true}, this.props.history.push('/buddy'))
     })
   }
 
@@ -66,29 +67,46 @@ class App extends Component {
   }
 
   authorize = (Component) => {
-    if(this.state.loggedIn){
-      return <Component userInfo={this.state}/>
-    } else {
-      this.props.history.push('/home')
-      return null
+    // if(this.state.loggedIn && this.state.currentUser.username){
+    //   return <Component userInfo={this.state}/>
+    // } else if (this.state.loggedIn && this.props.location.pathname === '/home') {
+    //   this.props.history.push('/buddy')
+    //   return <Component userInfo={this.state}/>
+    // }else {
+    //   debugger;
+    //   this.props.history.push('/home')
+    //   return null
+    // }
+
+    return class extends React.Component{
+
+      render(){
+        console.log(this.state)
+        if(localStorage.getItem('token') && this.props.location.pathname === '/home'){
+          console.log('first')
+          return <Redirect to='/buddy' />
+        } else if (!localStorage.getItem('token') && this.props.location.pathname !== '/home') {
+            console.log('second', localStorage.getItem('token'))
+            return <Redirect to='/home' />
+        } else {
+          console.log('third')
+          return <Component userInfo={this.state}/>
+        }
+      }
     }
   }
 
   render() {
-    // console.log(this.state)
+    console.log(this.state)
+    console.log(this.props)
+    const AuthUser = this.authorize(NavRenderContainer)
     return (
       <div className="App">
         <HeaderContainer loggedIn={this.state.loggedIn}
           logOut={this.logOut}
-          username={this.state.username}/>
+          username={this.state.currentUser.username}/>
         <Switch>
-<<<<<<< HEAD
-          <Route exact path='/' component={() => this.authorize(NavRenderContainer)} />
-=======
-          <Route exact path='/' render={()=>{
-              return this.state.loggedIn ? <NavRenderContainer /> : <LandingPage/>
-            }} />
->>>>>>> b63bbe06725d8da2a6452114afb2356422ce831d
+          <Route exact path='/' component={AuthUser} />
 
           <Route path='/LogIn' render={() => <LogIn
             handleChange={this.handleChange}
@@ -104,17 +122,12 @@ class App extends Component {
             lastName={this.state.lastName}
             signUp={this.signUp}/>
           }/>
-<<<<<<< HEAD
         <Route path='/home' render={() => <LandingPage/>}/>
-        <Route path='/Buddy' component={() => this.authorize(NavRenderContainer)}/>
-=======
-        <Route path='/Buddy' render={() => <NavRenderContainer
-            userInfo={this.state}/>
-        }/>
+        <Route path='/Buddy' component={AuthUser}/>
+
         <Route path='/newnote' render={() => <NoteEdit
             userInfo={this.state}/>
         }/>
->>>>>>> b63bbe06725d8da2a6452114afb2356422ce831d
         </Switch>
       </div>
     );

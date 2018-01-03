@@ -8,8 +8,8 @@ const HeaderContainer = ({loggedIn, username, logOut}) => {
       <div>
         <Segment.Group horizontal >
           <Segment color='green'><Header as='h1' textAlign='center'>Study Buddy</Header></Segment>
-          {loggedIn ? <Segment><Header as='h1' textAlign='center'>Welcome {username}</Header></Segment> : null}
-          {loggedIn ? <Segment><Link to='/'><Button animated='fade' color='red' floated='right' onClick={logOut}>
+          {loggedIn ? <Segment color='red'><Header as='h1' textAlign='center'>Welcome {username}</Header></Segment> : null}
+          {loggedIn ? <Segment color='green'><Link to='/'><Button animated='fade' color='red' floated='right' onClick={logOut}>
             <Button.Content visible>Sign Out</Button.Content>
             <Button.Content hidden>
               <Icon name='sign out' />
