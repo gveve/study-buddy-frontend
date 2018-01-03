@@ -24,8 +24,8 @@ class UserShow extends React.Component{
   }
 
   showResponse = () => {
-    fetch('http://localhost:3000/subjects').then(res => res.json()).then(response => this.setState({subjects:response}))
-      fetch('http://localhost:3000/sub_headers').then(res => res.json()).then(response => this.setState({courses:response}))
+    fetch('http://localhost:3000/api/v1/subjects').then(res => res.json()).then(response => this.setState({subjects:response}))
+      fetch('http://localhost:3000/api/v1/sub_headers').then(res => res.json()).then(response => this.setState({courses:response}))
   }
 
   componentDidMount = () => {

@@ -22,7 +22,7 @@ class LandingPage extends React.Component{
               </Button.Content>
             </Button>
           </Link>
-        <Link to='/signup'><Button animated='vertical' color='orange' size='massive'>
+          <Link to='/signup'><Button animated='vertical' color='orange' size='massive'>
             <Button.Content visible>Sign Up</Button.Content>
             <Button.Content hidden>
               <Icon name='user' />
