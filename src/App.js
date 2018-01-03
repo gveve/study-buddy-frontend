@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import LandingPage from './containers/LandingPage'
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import LogIn from './components/LogIn'
 import HeaderContainer from './containers/HeaderContainer'
 import SignUp from './components/SignUp'
@@ -60,6 +60,15 @@ class App extends Component {
     this.setState({currentUser: {}, loggedIn: false})
   }
 
+  authorize = (Component) => {
+    if(this.state.loggedIn){
+      return <Component userInfo={this.state}/>
+    } else {
+      this.props.history.push('/home')
+      return null
+    }
+  }
+
   render() {
     console.log(this.state.loggedIn)
     return (
@@ -68,9 +77,7 @@ class App extends Component {
           logOut={this.logOut}
           username={this.state.username}/>
         <Switch>
-          <Route exact path='/' render={()=>{
-              return this.state.loggedIn ? <NavRenderContainer /> : <Redirect to={LandingPage} />
-            }} />
+          <Route exact path='/' component={() => this.authorize(NavRenderContainer)} />
 
           <Route path='/LogIn' render={() => <LogIn
             handleChange={this.handleChange}
@@ -86,13 +93,12 @@ class App extends Component {
             lastName={this.state.lastName}
             signUp={this.signUp}/>
           }/>
-        <Route path='/Buddy' render={() => <NavRenderContainer
-            userInfo={this.state}/>
-        }/>
+        <Route path='/home' render={() => <LandingPage/>}/>
+        <Route path='/Buddy' component={() => this.authorize(NavRenderContainer)}/>
         </Switch>
       </div>
     );
   }
 }
 
-export default App;
+export default withRouter(App);

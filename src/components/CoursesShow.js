@@ -21,7 +21,6 @@ class SubjectsShow extends React.Component{
   courses = () => {
   // console.log(this.state.response.props.response);
   let courses = this.state.response.props.response
-  debugger;
       return courses.map((sub, i) => {
         // console.log(sub.name);
         return (
