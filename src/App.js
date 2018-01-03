@@ -4,10 +4,11 @@ import './App.css';
 import LandingPage from './containers/LandingPage'
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import LogIn from './components/LogIn'
+import NoteEdit from './components/NoteEdit'
 import HeaderContainer from './containers/HeaderContainer'
-import SignUp from './components/SignUp'
 import NavRenderContainer from './containers/NavRenderContainer'
 import api from './AuthAdapter/api'
+import SignUp from './components/SignUp'
 
 class App extends Component {
   state = {
@@ -45,7 +46,11 @@ class App extends Component {
       last_name: this.state.lastName
     })}
     fetch('http://localhost:3000/api/v1/users', newUser)
-    this.setState({loggedIn: true})
+    .then(res => res.json())
+    .then(user => {
+      this.setState({loggedIn: true, currentUser: user})
+    })
+
   }
 
   logIn = () => {
@@ -70,14 +75,20 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.loggedIn)
+    // console.log(this.state)
     return (
       <div className="App">
         <HeaderContainer loggedIn={this.state.loggedIn}
           logOut={this.logOut}
           username={this.state.username}/>
         <Switch>
+<<<<<<< HEAD
           <Route exact path='/' component={() => this.authorize(NavRenderContainer)} />
+=======
+          <Route exact path='/' render={()=>{
+              return this.state.loggedIn ? <NavRenderContainer /> : <LandingPage/>
+            }} />
+>>>>>>> b63bbe06725d8da2a6452114afb2356422ce831d
 
           <Route path='/LogIn' render={() => <LogIn
             handleChange={this.handleChange}
@@ -93,8 +104,17 @@ class App extends Component {
             lastName={this.state.lastName}
             signUp={this.signUp}/>
           }/>
+<<<<<<< HEAD
         <Route path='/home' render={() => <LandingPage/>}/>
         <Route path='/Buddy' component={() => this.authorize(NavRenderContainer)}/>
+=======
+        <Route path='/Buddy' render={() => <NavRenderContainer
+            userInfo={this.state}/>
+        }/>
+        <Route path='/newnote' render={() => <NoteEdit
+            userInfo={this.state}/>
+        }/>
+>>>>>>> b63bbe06725d8da2a6452114afb2356422ce831d
         </Switch>
       </div>
     );

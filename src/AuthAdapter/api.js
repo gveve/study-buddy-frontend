@@ -1,24 +1,27 @@
 const baseUrl = 'http://localhost:3000/api/v1'
 
-const token = localStorage.getItem('token');
+function getHeaders() {
+  const token = localStorage.getItem('token');
 
-const headers = {
-  'Content-Type': 'application/json',
-  Accepts: 'application/json',
-  Authorization: token
-};
+  const headers = {
+    'Content-Type': 'application/json',
+    Accepts: 'application/json',
+    Authorization: token
+  };
+  return headers
+}
 
 const login = (username, password) => {
   return fetch(`${baseUrl}/auth/`, {
     method: 'POST',
-    headers: headers,
+    headers: getHeaders(),
     body: JSON.stringify({ username, password })
   }).then(res => res.json());
 };
 
 const getCurrentUser = () => {
   return fetch(`${baseUrl}/current_user`, {
-    headers: headers
+    headers: getHeaders()
   }).then(res => res.json());
 };
 

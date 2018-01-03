@@ -38,7 +38,6 @@ const SignUp = ({handleChange, username, password, firstName, lastName, signUp})
         </Segment>
       </div>
     )
-
 }
 
 export default SignUp;

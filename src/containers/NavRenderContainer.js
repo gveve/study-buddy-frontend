@@ -5,21 +5,22 @@ import SubjectsShow from '../components/SubjectsShow'
 import CoursesShow from '../components/CoursesShow'
 import NotesList from '../components/NotesList'
 import NoteNew from '../components/NoteNew'
+import NoteEdit from '../components/NoteEdit'
 import LandingPage from '../containers/LandingPage'
 import HeaderContainer from '../containers/HeaderContainer'
-import { Grid, Sticky, Table, Visibility, Container, Divider, Header, Menu, Message, Segment, Sidebar, Button, Image, Icon, } from 'semantic-ui-react'
+import { Grid, Sticky, Table, Visibility, Container, Divider, Header, Menu, Message, Segment, Sidebar, Button, Image, Icon, Input} from 'semantic-ui-react'
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 
 
-class UserShow extends React.Component{
+class NavRenderContainer extends React.Component{
   constructor(props) {
     super(props);
-    console.log('hello', props)
     this.state = {
+      userInfo:{props},
       visible: false,
       type: '',
       subjects: [],
-      courses: []
+      courses: [],
     }
   }
 
@@ -35,23 +36,26 @@ class UserShow extends React.Component{
     toggleVisibility = () => this.setState({ visible: !this.state.visible })
 
     handleRender = (event) => {
-      // event.preventDefault()
-      // console.log(event.currentTarget.innerText);
-      // console.log(this.state.subjects);
-      // console.log(this.state.courses);
-      // debugger;
       this.setState({
         type:event.currentTarget.innerText
       })
     }
 
 
+
   render(){
     const { visible } = this.state
+    const handleEdit = (props) => {
+      // debugger
+      content = <NoteEdit props={props} />
+    }
 
     let content
 
     switch (this.state.type) {
+      case 'Home':
+          content = <LandingPage />
+        break;
       case 'Subjects':
           content = <SubjectsShow response={this.state.subjects} />
         break;
@@ -62,10 +66,13 @@ class UserShow extends React.Component{
           content = <NotesList courses={this.state.courses} subjects={this.state.subjects}/>
         break;
       case 'New Note':
-          content = <NoteNew courses={this.state.courses} subjects={this.state.subjects}/>
+          content = <NoteNew courses={this.state.courses} subjects={this.state.subjects} userInfo={this.state.userInfo} handleEdit={handleEdit} />
+        break;
+      case 'Note Edit':
+          content = <NoteEdit courses={this.state.courses} subjects={this.state.subjects} userInfo={this.state.userInfo}/>
         break;
       default:
-          content = <p> Hey! </p>
+          content = <p> Click menu to get started! </p>
 
     }
     return(
@@ -75,34 +82,34 @@ class UserShow extends React.Component{
     </Container>
     <div>
     <Sidebar.Pushable as={Segment} >
-      <Sidebar as={Menu} animation='scale down' width='thin' visible={visible} icon='labeled' vertical inverted>
-        <Menu.Item name='home'>
+      <Sidebar as={Menu} animation='slide along' width='thin' visible={visible} icon='labeled' vertical inverted>
+        <Menu.Item name='home'onClick={this.handleRender}>
           <Icon name='home' />
           Home
         </Menu.Item>
-        <Menu.Item name='game' value='game' onClick={this.handleRender}>
-          <Icon name='game' />
+        <Menu.Item name='align justify' onClick={this.handleRender}>
+          <Icon name='align justify' />
           Subjects
         </Menu.Item>
-        <Menu.Item name='camera' onClick={this.handleRender}>
-          <Icon name='camera' />
+        <Menu.Item name='list' onClick={this.handleRender}>
+          <Icon name='list' />
           Courses
         </Menu.Item>
-        <Menu.Item name='camera'onClick={this.handleRender}>
-          <Icon name='camera' />
+        <Menu.Item name='clone'onClick={this.handleRender}>
+          <Icon name='clone' />
           Notes
         </Menu.Item>
-        <Menu.Item name='camera'onClick={this.handleRender}>
-          <Icon name='camera' />
+        <Menu.Item name='edit'onClick={this.handleRender}>
+          <Icon name='edit' />
           New Note
         </Menu.Item>
       </Sidebar>
       <Sidebar.Pusher>
       <Segment
         textAlign='center'
-        style={{ minHeight: 700}}
+        style={{ minHeight: 500}}
         vertical>
-        <h1> Hey friend </h1>
+        <h1> Hey Buddy </h1>
         {content}
       </Segment>
       </Sidebar.Pusher>
@@ -114,4 +121,4 @@ class UserShow extends React.Component{
 
 }
 
-export default UserShow;
+export default NavRenderContainer;
